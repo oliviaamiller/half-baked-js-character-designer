@@ -25,8 +25,9 @@ headDropdown.addEventListener('change', () => {
     // increment the head change count state
     headCount++;
     // update the dom for the head
-    headEl.textContent = '';
+    headEl.textContent = ''; //this clears the dom
     let img = document.createElement('img');
+    img.classList.add('img');
     img.src = `./assets/${id}-head.png`;
     headEl.append(img);
     // update the stats to show the new count
@@ -40,8 +41,9 @@ middleDropdown.addEventListener('change', () => {
     // increment the middle change count state
     middleCount++;
     // update the dom for the middle
-    middleEl.textContent = '';
+    middleEl.textContent = ''; //this clears the dom
     let img = document.createElement('img');
+    img.classList.add('img');
     img.src = `./assets/${id}-middle.png`;
     middleEl.append(img);
     // update the stats to show the new count
@@ -55,8 +57,9 @@ bottomDropdown.addEventListener('change', () => {
     // increment the bottom change count state
     bottomCount++;
     // update the dom for the bottom
-    bottomEl.textContent = '';
+    bottomEl.textContent = ''; //this clears the dom
     let img = document.createElement('img');
+    img.classList.add('img');
     img.src = `./assets/${id}-pants.png`;
     bottomEl.append(img);
     // update the stats to show the new count
@@ -65,7 +68,7 @@ bottomDropdown.addEventListener('change', () => {
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    const catchphraseValue = catchphrasesEl.value;
+    const newCatchphrase = catchphrasesEl.value;
     // push the new catchphrase to the catchphrase array in state
     catchphraseArray.push(newCatchphrase);
     // update the dom for the bottom
@@ -80,7 +83,7 @@ function displayStats() {
     // change the text contentof the reportEl to tell the user how many times they've changed each piece of the state
     const statsString = makeStatsString(); // call this function with the correct arguments
 
-    reportEl.textContent = statsString;
+    reportEl.textContent = statsString(headCount, middleCount, bottomCount);
 }
 
 function displayCatchphrases() {
