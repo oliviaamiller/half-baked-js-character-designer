@@ -25,6 +25,7 @@ headDropdown.addEventListener('change', () => {
     // increment the head change count state
     headCount++;
     // update the dom for the head
+    headEl.textContent = '';
     let img = document.createElement('img');
     img.src = `./assets/${id}-head.png`;
     headEl.append(img);
@@ -39,6 +40,7 @@ middleDropdown.addEventListener('change', () => {
     // increment the middle change count state
     middleCount++;
     // update the dom for the middle
+    middleEl.textContent = '';
     let img = document.createElement('img');
     img.src = `./assets/${id}-middle.png`;
     middleEl.append(img);
@@ -53,6 +55,7 @@ bottomDropdown.addEventListener('change', () => {
     // increment the bottom change count state
     bottomCount++;
     // update the dom for the bottom
+    bottomEl.textContent = '';
     let img = document.createElement('img');
     img.src = `./assets/${id}-pants.png`;
     bottomEl.append(img);
@@ -67,6 +70,7 @@ catchphraseButton.addEventListener('click', () => {
     catchphraseArray.push(newCatchphrase);
     // update the dom for the bottom
     // clear out the form input's value so it's empty to the user
+    catchphraseInput.textContent = '';
     // update the dom to show the new catchphrases (call a function to do this work)
     displayCatchphrases();
 
