@@ -21,15 +21,11 @@ let catchphraseArray = [];
 
 headDropdown.addEventListener('change', () => {
     // get the value of the head dropdown
-    const id = headDropdown.value;
+    const selection = headDropdown.value;
     // increment the head change count state
     headCount++;
     // update the dom for the head
-    headEl.textContent = ''; //this clears the dom
-    let img = document.createElement('img');
-    img.classList.add('img');
-    img.src = `./assets/${id}-head.png`;
-    headEl.append(img);
+    headEl.style.backgroundImage = `url(./assets/${selection}-head.png)`;
     // update the stats to show the new count
     displayStats();
 });
@@ -37,15 +33,11 @@ headDropdown.addEventListener('change', () => {
 
 middleDropdown.addEventListener('change', () => {
     // get the value of the middle dropdown
-    const id = middleDropdown.value;
+    const selection = middleDropdown.value;
     // increment the middle change count state
     middleCount++;
     // update the dom for the middle
-    middleEl.textContent = ''; //this clears the dom
-    let img = document.createElement('img');
-    img.classList.add('img');
-    img.src = `./assets/${id}-middle.png`;
-    middleEl.append(img);
+    middleEl.style.backgroundImage = `url(./assets/${selection}-middle.png)`;
     // update the stats to show the new count
     displayStats();
 });
@@ -53,37 +45,32 @@ middleDropdown.addEventListener('change', () => {
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
-    const id = bottomDropdown.value;
+    const selection = bottomDropdown.value;
     // increment the bottom change count state
     bottomCount++;
     // update the dom for the bottom
-    bottomEl.textContent = ''; //this clears the dom
-    let img = document.createElement('img');
-    img.classList.add('img');
-    img.src = `./assets/${id}-pants.png`;
-    bottomEl.append(img);
+    bottomEl.style.backgroundImage = `url(./assets/${selection}-pants.png)`;
     // update the stats to show the new count
     displayStats();
 });
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    const newCatchphrase = catchphrasesEl.value;
+    const newCatchphrase = catchphraseInput.value;
     // push the new catchphrase to the catchphrase array in state
     catchphraseArray.push(newCatchphrase);
-    // update the dom for the bottom
     // clear out the form input's value so it's empty to the user
-    catchphraseInput.textContent = '';
+    catchphraseInput.value = '';
     // update the dom to show the new catchphrases (call a function to do this work)
     displayCatchphrases();
 
 });
 
 function displayStats() {
-    // change the text contentof the reportEl to tell the user how many times they've changed each piece of the state
-    const statsString = makeStatsString(); // call this function with the correct arguments
+    // change the text content of the reportEl to tell the user how many times they've changed each piece of the state
+    const statsString = makeStatsString(headCount, middleCount, bottomCount); // call this function with the correct arguments
+    reportEl.textContent = statsString;
 
-    reportEl.textContent = statsString(headCount, middleCount, bottomCount);
 }
 
 function displayCatchphrases() {
@@ -102,6 +89,4 @@ function displayCatchphrases() {
 
         catchphrasesEl.append(p);
     }
-
-    
 }
